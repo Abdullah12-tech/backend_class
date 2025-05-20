@@ -13,10 +13,11 @@ app.use(cors())
 //     methods: ["GET", "POST"]
 // }))
 
-const connectToDb = require("./config/connectToDb")
 const productRouter = require("./routes/productRouter")
 const authRouter = require("./routes/authRouter")
-connectToDb()
+
+require("./config/connectToDb")
+require("./services/nodemailer/transporter")
 
 // listen to port
 app.listen(4003, ()=>{
@@ -30,3 +31,7 @@ app.use("/api/auth", authRouter)
 app.use("/api/users", userRouter)
 app.use("/api/categories", categoryRouter)
 app.use("/api/products", productRouter)
+
+
+// PROTECTED ROUTES
+// MIDDLEWARE => A function that is executed before the final request handler
