@@ -20,7 +20,7 @@ const addNewProduct = async (req, res)=>{
     }
 }
 
-const getAllProduct =async (req, res)=>{
+const getAllProduct = async (req, res)=>{
     try {
         const products = await productModel.find().populate("seller category") // return all products
         if(!products){
